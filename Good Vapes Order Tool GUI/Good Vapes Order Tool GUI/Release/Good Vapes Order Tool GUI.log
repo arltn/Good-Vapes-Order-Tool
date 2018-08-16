@@ -1,0 +1,10 @@
+﻿  stdafx.cpp
+  AssemblyInfo.cpp
+  C_BSTree.cpp
+  C_Record.cpp
+c:\users\natea\source\repos\good vapes order tool gui\good vapes order tool gui\c_record.cpp(149): warning C4018: '<': signed/unsigned mismatch
+  CppCLR_WinformsProjekt.cpp
+  Form1.cpp
+  Generating Code...
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  Good Vapes Order Tool GUI.vcxproj -> C:\Users\natea\source\repos\Good Vapes Order Tool GUI\Release\Good Vapes Order Tool GUI.exe

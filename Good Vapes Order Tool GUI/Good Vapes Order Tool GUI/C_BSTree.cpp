@@ -180,8 +180,9 @@ void C_BSTree::compileList(C_BSTree& compareTree, C_BSTree& buildTree, C_Node* N
 		if (qtyToOrder > 0)
 		{
 			holdC_Record.setQuantity(qtyToOrder);
-			buildTree.addNode(holdC_Record);
 		}
+		holdC_Record.setCost(Node->Key().getCost());
+		buildTree.addNode(holdC_Record);
 	}
 
 	//if(holdC_Record.getSKU() == )
@@ -443,7 +444,7 @@ ostream& C_BSTree::saveInorderCSV(C_Node* Node, ostream& out)
 	// Having to add this as the CSEGrid doesn't seem to appreciate the pass by function call.
 	holdRecord = Node->Key();
 
-	holdString = holdRecord.getSKU() + "," + holdRecord.getItemDescription() + "," + to_string(holdRecord.getQuantity());
+	holdString = holdRecord.getSKU() + "," + holdRecord.getItemDescription() + "," + to_string(holdRecord.getQuantity()) + "," + to_string(holdRecord.getCost()) + "," + to_string(holdRecord.getCost() * holdRecord.getQuantity());
 
 	//cout << holdString << endl;
 	//system("PAUSE");
@@ -476,7 +477,9 @@ void C_BSTree::saveInorderCSV(C_Node* Node, System::IO::StreamWriter^ out)
 	// Having to add this as the CSEGrid doesn't seem to appreciate the pass by function call.
 	holdRecord = Node->Key();
 
-	holdString = holdRecord.getSKU() + "," + holdRecord.getItemDescription() + "," + to_string(holdRecord.getQuantity());
+	//holdString = holdRecord.getSKU() + "," + holdRecord.getItemDescription() + "," + to_string(holdRecord.getQuantity());
+	// replaced with the below line
+	holdString = holdRecord.getSKU() + "," + holdRecord.getItemDescription() + "," + to_string(holdRecord.getQuantity()) + "," + to_string(holdRecord.getCost()) + "," + to_string(holdRecord.getCost() * static_cast<float>(holdRecord.getQuantity()));
 	// try it manually
 	System::String^ writeString = gcnew System::String(holdString.c_str());
 

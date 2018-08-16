@@ -16,10 +16,12 @@ public:
 	void setItemDescription(string ID) { ItemDescription = ID; };
 	void setAlternateSKU(string sku) { alternateSKU = sku; };
 	void setQuantity(int qty = 0) { quantity = qty; };
+	void setCost(float cost_in = 0) { cost = cost_in; };
 	string getSKU() { return SKU; };
 	string getItemDescription() { return ItemDescription; };
 	string getAlternateSKU() { return alternateSKU; };
 	int getQuantity() { return quantity; };
+	float getCost() { return cost; };
 	//Record(const Record &obj); // copy constuctor
 	/*
 	void setID(string id) { ID = id; };
@@ -69,6 +71,7 @@ private:
 	string ItemDescription;
 	string alternateSKU;
 	int quantity;
+	float cost;
 	/*
 	string ID;
 	string firstName;

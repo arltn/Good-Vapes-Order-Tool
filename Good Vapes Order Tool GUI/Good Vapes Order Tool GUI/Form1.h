@@ -279,7 +279,7 @@ namespace CppCLR_WinformsProjekt {
 			this->Controls->Add(this->openInventoryFileBtn);
 			this->Controls->Add(this->openSalesFileBtn);
 			this->Name = L"Form1";
-			this->Text = L"Good Vapes Order Tool v1.0";
+			this->Text = L"Good Vapes Order Tool v1.1";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -413,14 +413,31 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 		currentLine = msclr::interop::marshal_as<std::string>(inventoryFile->ReadLine());
 		holdRecord.setItemDescription(getField(currentLine, 2));
 		holdRecord.setAlternateSKU(getField(currentLine, 3));
+		if (getField(currentLine, 8) == "")
+		{
+			holdRecord.setCost(0);
+		}
+		else
+		{
+			holdRecord.setCost(stof(getField(currentLine, 8)));
+		}
+
 		holdRecord.setSKU(getField(currentLine, 10));
+		
 		if (getField(currentLine, 12) == "")
 		{
 			holdRecord.setQuantity(0);
 		}
 		else
 		{
-			holdRecord.setQuantity(stoi(getField(currentLine, 12)));
+			if (stoi(getField(currentLine, 12)) < 0)
+			{
+				holdRecord.setQuantity(0);
+			}
+			else
+			{
+				holdRecord.setQuantity(stoi(getField(currentLine, 12)));
+			}
 		}
 		inventoryTree.addNode(holdRecord);
 		lineCount++;
@@ -431,7 +448,7 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 	// clear out the currentLine to be sure we aren't getting overflow data
 	currentLine = "";
 
-	//clear out the holdRecord to be sure we aren't getting overflow data
+	//clear out the holdInvRecord to be sure we aren't getting overflow data
 	holdRecord.clear();
 
 	//clear out the header items
@@ -468,7 +485,7 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 
 
 	orderFile = gcnew System::IO::StreamWriter(orderFilename);
-	orderFile->WriteLine("SKU,ITEM DESCRIPTION, QTY ORDERED");
+	orderFile->WriteLine("SKU,ITEM DESCRIPTION, QTY ORDERED, COST, TOTAL COST");
 	orderTree.saveInorderCSV(orderTree.Root(), orderFile);
 
 	orderFile->Close();

@@ -181,7 +181,7 @@ void C_BSTree::compileList(C_BSTree& compareTree, C_BSTree& buildTree, C_Node* N
 		{
 			holdC_Record.setQuantity(qtyToOrder);
 		}
-		holdC_Record.setCost(Node->Key().getCost());
+		holdC_Record.setCost(holdNode->Key().getCost());
 		buildTree.addNode(holdC_Record);
 	}
 

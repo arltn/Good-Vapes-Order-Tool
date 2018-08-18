@@ -498,7 +498,6 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 	inventoryControlFile->Close();
 
 	errorMessage->Text = "Complete!";
-
 }
 
 private: System::Void storeComboBox_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {

@@ -6,6 +6,7 @@
 #include <string>
 #include "C_BSTree.h"
 #include <msclr\marshal_cppstd.h>
+#include <math.h>
 
 namespace CppCLR_WinformsProjekt {
 
@@ -44,22 +45,29 @@ namespace CppCLR_WinformsProjekt {
 	private: System::Windows::Forms::Button^  openSalesFileBtn;
 	protected:
 	private: System::Windows::Forms::Button^  openInventoryFileBtn;
-	private: System::Windows::Forms::OpenFileDialog^  openSalesFileDialog;
-	private: System::Windows::Forms::TextBox^  salesFileNameTextBox;
-	private: System::Windows::Forms::Label^  salesFileLabel;
+	private: System::Windows::Forms::OpenFileDialog^  openNWSalesFileDialog;
+
+	private: System::Windows::Forms::TextBox^  nwSalesFileTextBox;
+
+	private: System::Windows::Forms::Label^  nwSalesFileLabel;
+
+
 	private: System::Windows::Forms::Label^  inventoryFileLabel;
+	private: System::Windows::Forms::TextBox^  nwInventoryFileTextBox;
+
+	private: System::Windows::Forms::OpenFileDialog^  openNWInventoryFileDialog;
 
 
-	private: System::Windows::Forms::TextBox^  inventoryFileNameTextBox;
 
-	private: System::Windows::Forms::OpenFileDialog^  openInventoryFileDialog;
+
+
 	private: System::Windows::Forms::Button^  runOrder;
 	private: System::Windows::Forms::DateTimePicker^  dateTimePicker1;
 	private: System::Windows::Forms::Label^  dateLabel;
-	private: System::Windows::Forms::ComboBox^  storeComboBox;
 
 
-	private: System::Windows::Forms::Label^  storeLabel;
+
+
 	private: System::Windows::Forms::Label^  errorMessage;
 	private: System::Windows::Forms::Label^  orderLocationLabel;
 
@@ -67,6 +75,17 @@ namespace CppCLR_WinformsProjekt {
 
 	private: System::Windows::Forms::Button^  orderFileButton;
 	private: System::Windows::Forms::FolderBrowserDialog^  orderFolderBrowserDialog;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::TextBox^  lemmonInvFileTextBox;
+
+	private: System::Windows::Forms::Label^  NWSales;
+	private: System::Windows::Forms::TextBox^  lemmonSalesFileTextBox;
+
+	private: System::Windows::Forms::OpenFileDialog^  openLemmonSalesFileDialog;
+	private: System::Windows::Forms::OpenFileDialog^  openLemmonInvFileDialog;
+
+
+
 
 
 
@@ -95,94 +114,98 @@ namespace CppCLR_WinformsProjekt {
 		{
 			this->openSalesFileBtn = (gcnew System::Windows::Forms::Button());
 			this->openInventoryFileBtn = (gcnew System::Windows::Forms::Button());
-			this->openSalesFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->salesFileNameTextBox = (gcnew System::Windows::Forms::TextBox());
-			this->salesFileLabel = (gcnew System::Windows::Forms::Label());
+			this->openNWSalesFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->nwSalesFileTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->nwSalesFileLabel = (gcnew System::Windows::Forms::Label());
 			this->inventoryFileLabel = (gcnew System::Windows::Forms::Label());
-			this->inventoryFileNameTextBox = (gcnew System::Windows::Forms::TextBox());
-			this->openInventoryFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->nwInventoryFileTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->openNWInventoryFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->runOrder = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->dateLabel = (gcnew System::Windows::Forms::Label());
-			this->storeComboBox = (gcnew System::Windows::Forms::ComboBox());
-			this->storeLabel = (gcnew System::Windows::Forms::Label());
 			this->errorMessage = (gcnew System::Windows::Forms::Label());
 			this->orderLocationLabel = (gcnew System::Windows::Forms::Label());
 			this->orderFileLocationtextBox = (gcnew System::Windows::Forms::TextBox());
 			this->orderFileButton = (gcnew System::Windows::Forms::Button());
 			this->orderFolderBrowserDialog = (gcnew System::Windows::Forms::FolderBrowserDialog());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lemmonInvFileTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->NWSales = (gcnew System::Windows::Forms::Label());
+			this->lemmonSalesFileTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->openLemmonSalesFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->openLemmonInvFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->SuspendLayout();
 			// 
 			// openSalesFileBtn
 			// 
-			this->openSalesFileBtn->Location = System::Drawing::Point(360, 91);
+			this->openSalesFileBtn->Location = System::Drawing::Point(389, 107);
 			this->openSalesFileBtn->Name = L"openSalesFileBtn";
 			this->openSalesFileBtn->Size = System::Drawing::Size(84, 23);
 			this->openSalesFileBtn->TabIndex = 3;
-			this->openSalesFileBtn->Text = L"Choose File";
+			this->openSalesFileBtn->Text = L"Choose Files";
 			this->openSalesFileBtn->UseVisualStyleBackColor = true;
 			this->openSalesFileBtn->Click += gcnew System::EventHandler(this, &Form1::openSalesFileBtn_Click);
 			// 
 			// openInventoryFileBtn
 			// 
-			this->openInventoryFileBtn->Location = System::Drawing::Point(360, 123);
+			this->openInventoryFileBtn->Location = System::Drawing::Point(389, 204);
 			this->openInventoryFileBtn->Name = L"openInventoryFileBtn";
 			this->openInventoryFileBtn->Size = System::Drawing::Size(84, 23);
 			this->openInventoryFileBtn->TabIndex = 5;
-			this->openInventoryFileBtn->Text = L"Choose File";
+			this->openInventoryFileBtn->Text = L"Choose Files";
 			this->openInventoryFileBtn->UseVisualStyleBackColor = true;
 			this->openInventoryFileBtn->Click += gcnew System::EventHandler(this, &Form1::openInventoryFileBtn_Click);
 			// 
-			// openSalesFileDialog
+			// openNWSalesFileDialog
 			// 
-			this->openSalesFileDialog->Filter = L"CSV Files (*.csv)|*.csv";
-			this->openSalesFileDialog->Title = L"Sales File";
-			this->openSalesFileDialog->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Form1::openSalesFileDialog_FileOk_1);
+			this->openNWSalesFileDialog->Filter = L"CSV Files (*.csv)|*.csv";
+			this->openNWSalesFileDialog->Title = L"NW Sales File";
+			this->openNWSalesFileDialog->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Form1::openSalesFileDialog_FileOk_1);
 			// 
-			// salesFileNameTextBox
+			// nwSalesFileTextBox
 			// 
-			this->salesFileNameTextBox->Location = System::Drawing::Point(117, 92);
-			this->salesFileNameTextBox->Name = L"salesFileNameTextBox";
-			this->salesFileNameTextBox->Size = System::Drawing::Size(237, 20);
-			this->salesFileNameTextBox->TabIndex = 2;
+			this->nwSalesFileTextBox->Location = System::Drawing::Point(123, 108);
+			this->nwSalesFileTextBox->Name = L"nwSalesFileTextBox";
+			this->nwSalesFileTextBox->Size = System::Drawing::Size(260, 20);
+			this->nwSalesFileTextBox->TabIndex = 2;
 			// 
-			// salesFileLabel
+			// nwSalesFileLabel
 			// 
-			this->salesFileLabel->AutoSize = true;
-			this->salesFileLabel->Location = System::Drawing::Point(56, 96);
-			this->salesFileLabel->Name = L"salesFileLabel";
-			this->salesFileLabel->Size = System::Drawing::Size(55, 13);
-			this->salesFileLabel->TabIndex = 3;
-			this->salesFileLabel->Text = L"Sales File:";
+			this->nwSalesFileLabel->AutoSize = true;
+			this->nwSalesFileLabel->Location = System::Drawing::Point(39, 160);
+			this->nwSalesFileLabel->Name = L"nwSalesFileLabel";
+			this->nwSalesFileLabel->Size = System::Drawing::Size(78, 13);
+			this->nwSalesFileLabel->TabIndex = 3;
+			this->nwSalesFileLabel->Text = L"Lem Sales File:";
 			// 
 			// inventoryFileLabel
 			// 
 			this->inventoryFileLabel->AutoSize = true;
-			this->inventoryFileLabel->Location = System::Drawing::Point(38, 128);
+			this->inventoryFileLabel->Location = System::Drawing::Point(22, 207);
 			this->inventoryFileLabel->Name = L"inventoryFileLabel";
-			this->inventoryFileLabel->Size = System::Drawing::Size(73, 13);
+			this->inventoryFileLabel->Size = System::Drawing::Size(95, 13);
 			this->inventoryFileLabel->TabIndex = 5;
-			this->inventoryFileLabel->Text = L"Inventory File:";
+			this->inventoryFileLabel->Text = L"NW Inventory File:";
 			// 
-			// inventoryFileNameTextBox
+			// nwInventoryFileTextBox
 			// 
-			this->inventoryFileNameTextBox->Location = System::Drawing::Point(117, 124);
-			this->inventoryFileNameTextBox->Name = L"inventoryFileNameTextBox";
-			this->inventoryFileNameTextBox->Size = System::Drawing::Size(237, 20);
-			this->inventoryFileNameTextBox->TabIndex = 4;
+			this->nwInventoryFileTextBox->Location = System::Drawing::Point(123, 204);
+			this->nwInventoryFileTextBox->Name = L"nwInventoryFileTextBox";
+			this->nwInventoryFileTextBox->Size = System::Drawing::Size(260, 20);
+			this->nwInventoryFileTextBox->TabIndex = 4;
 			// 
-			// openInventoryFileDialog
+			// openNWInventoryFileDialog
 			// 
-			this->openInventoryFileDialog->Filter = L"CSV Files (*.csv)|*.csv";
-			this->openInventoryFileDialog->Title = L"Inventory File";
-			this->openInventoryFileDialog->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Form1::openInventoryFileDialog_FileOk);
+			this->openNWInventoryFileDialog->Filter = L"CSV Files (*.csv)|*.csv";
+			this->openNWInventoryFileDialog->Title = L"NW Inventory File";
+			this->openNWInventoryFileDialog->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Form1::openInventoryFileDialog_FileOk);
 			// 
 			// runOrder
 			// 
 			this->runOrder->Enabled = false;
-			this->runOrder->Location = System::Drawing::Point(117, 188);
+			this->runOrder->Location = System::Drawing::Point(123, 348);
 			this->runOrder->Name = L"runOrder";
-			this->runOrder->Size = System::Drawing::Size(327, 59);
+			this->runOrder->Size = System::Drawing::Size(260, 59);
 			this->runOrder->TabIndex = 6;
 			this->runOrder->Text = L"Build Order";
 			this->runOrder->UseVisualStyleBackColor = true;
@@ -191,43 +214,25 @@ namespace CppCLR_WinformsProjekt {
 			// dateTimePicker1
 			// 
 			this->dateTimePicker1->CustomFormat = L"MM-DD-YY";
-			this->dateTimePicker1->Location = System::Drawing::Point(117, 60);
+			this->dateTimePicker1->Location = System::Drawing::Point(123, 60);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(237, 20);
-			this->dateTimePicker1->TabIndex = 1;
+			this->dateTimePicker1->Size = System::Drawing::Size(260, 20);
+			this->dateTimePicker1->TabIndex = 99;
+			this->dateTimePicker1->TabStop = false;
 			// 
 			// dateLabel
 			// 
 			this->dateLabel->AutoSize = true;
-			this->dateLabel->Location = System::Drawing::Point(78, 64);
+			this->dateLabel->Location = System::Drawing::Point(84, 64);
 			this->dateLabel->Name = L"dateLabel";
 			this->dateLabel->Size = System::Drawing::Size(33, 13);
 			this->dateLabel->TabIndex = 8;
 			this->dateLabel->Text = L"Date:";
 			// 
-			// storeComboBox
-			// 
-			this->storeComboBox->FormattingEnabled = true;
-			this->storeComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Northwest Highway", L"Lemmon" });
-			this->storeComboBox->Location = System::Drawing::Point(117, 27);
-			this->storeComboBox->Name = L"storeComboBox";
-			this->storeComboBox->Size = System::Drawing::Size(237, 21);
-			this->storeComboBox->TabIndex = 0;
-			this->storeComboBox->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::storeComboBox_SelectedIndexChanged);
-			// 
-			// storeLabel
-			// 
-			this->storeLabel->AutoSize = true;
-			this->storeLabel->Location = System::Drawing::Point(76, 31);
-			this->storeLabel->Name = L"storeLabel";
-			this->storeLabel->Size = System::Drawing::Size(35, 13);
-			this->storeLabel->TabIndex = 10;
-			this->storeLabel->Text = L"Store:";
-			// 
 			// errorMessage
 			// 
 			this->errorMessage->AutoSize = true;
-			this->errorMessage->Location = System::Drawing::Point(12, 292);
+			this->errorMessage->Location = System::Drawing::Point(12, 446);
 			this->errorMessage->Name = L"errorMessage";
 			this->errorMessage->Size = System::Drawing::Size(0, 13);
 			this->errorMessage->TabIndex = 11;
@@ -235,7 +240,7 @@ namespace CppCLR_WinformsProjekt {
 			// orderLocationLabel
 			// 
 			this->orderLocationLabel->AutoSize = true;
-			this->orderLocationLabel->Location = System::Drawing::Point(12, 160);
+			this->orderLocationLabel->Location = System::Drawing::Point(18, 303);
 			this->orderLocationLabel->Name = L"orderLocationLabel";
 			this->orderLocationLabel->Size = System::Drawing::Size(99, 13);
 			this->orderLocationLabel->TabIndex = 13;
@@ -243,14 +248,14 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			// orderFileLocationtextBox
 			// 
-			this->orderFileLocationtextBox->Location = System::Drawing::Point(117, 156);
+			this->orderFileLocationtextBox->Location = System::Drawing::Point(123, 300);
 			this->orderFileLocationtextBox->Name = L"orderFileLocationtextBox";
-			this->orderFileLocationtextBox->Size = System::Drawing::Size(237, 20);
+			this->orderFileLocationtextBox->Size = System::Drawing::Size(260, 20);
 			this->orderFileLocationtextBox->TabIndex = 12;
 			// 
 			// orderFileButton
 			// 
-			this->orderFileButton->Location = System::Drawing::Point(360, 155);
+			this->orderFileButton->Location = System::Drawing::Point(389, 298);
 			this->orderFileButton->Name = L"orderFileButton";
 			this->orderFileButton->Size = System::Drawing::Size(84, 23);
 			this->orderFileButton->TabIndex = 14;
@@ -258,24 +263,70 @@ namespace CppCLR_WinformsProjekt {
 			this->orderFileButton->UseVisualStyleBackColor = true;
 			this->orderFileButton->Click += gcnew System::EventHandler(this, &Form1::orderFileButton_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(22, 255);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(96, 13);
+			this->label1->TabIndex = 18;
+			this->label1->Text = L"Lem Inventory File:";
+			// 
+			// lemmonInvFileTextBox
+			// 
+			this->lemmonInvFileTextBox->Location = System::Drawing::Point(123, 252);
+			this->lemmonInvFileTextBox->Name = L"lemmonInvFileTextBox";
+			this->lemmonInvFileTextBox->Size = System::Drawing::Size(260, 20);
+			this->lemmonInvFileTextBox->TabIndex = 17;
+			// 
+			// NWSales
+			// 
+			this->NWSales->AutoSize = true;
+			this->NWSales->Location = System::Drawing::Point(44, 112);
+			this->NWSales->Name = L"NWSales";
+			this->NWSales->Size = System::Drawing::Size(77, 13);
+			this->NWSales->TabIndex = 16;
+			this->NWSales->Text = L"NW Sales File:";
+			// 
+			// lemmonSalesFileTextBox
+			// 
+			this->lemmonSalesFileTextBox->Location = System::Drawing::Point(123, 156);
+			this->lemmonSalesFileTextBox->Name = L"lemmonSalesFileTextBox";
+			this->lemmonSalesFileTextBox->Size = System::Drawing::Size(260, 20);
+			this->lemmonSalesFileTextBox->TabIndex = 15;
+			// 
+			// openLemmonSalesFileDialog
+			// 
+			this->openLemmonSalesFileDialog->Filter = L"CSV Files (*.csv)|*.csv";
+			this->openLemmonSalesFileDialog->Title = L"Lemmon Sales File";
+			this->openLemmonSalesFileDialog->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Form1::openLemmonSalesFileDialog_FileOk);
+			// 
+			// openLemmonInvFileDialog
+			// 
+			this->openLemmonInvFileDialog->Filter = L"CSV Files (*.csv)|*.csv";
+			this->openLemmonInvFileDialog->Title = L"Lemmon Inventory File";
+			this->openLemmonInvFileDialog->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Form1::openLemmonInvFileDialog_FileOk);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(527, 342);
+			this->ClientSize = System::Drawing::Size(527, 468);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lemmonInvFileTextBox);
+			this->Controls->Add(this->NWSales);
+			this->Controls->Add(this->lemmonSalesFileTextBox);
 			this->Controls->Add(this->orderLocationLabel);
 			this->Controls->Add(this->orderFileLocationtextBox);
 			this->Controls->Add(this->orderFileButton);
 			this->Controls->Add(this->errorMessage);
-			this->Controls->Add(this->storeLabel);
-			this->Controls->Add(this->storeComboBox);
 			this->Controls->Add(this->dateLabel);
 			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->runOrder);
 			this->Controls->Add(this->inventoryFileLabel);
-			this->Controls->Add(this->inventoryFileNameTextBox);
-			this->Controls->Add(this->salesFileLabel);
-			this->Controls->Add(this->salesFileNameTextBox);
+			this->Controls->Add(this->nwInventoryFileTextBox);
+			this->Controls->Add(this->nwSalesFileLabel);
+			this->Controls->Add(this->nwSalesFileTextBox);
 			this->Controls->Add(this->openInventoryFileBtn);
 			this->Controls->Add(this->openSalesFileBtn);
 			this->Name = L"Form1";
@@ -286,27 +337,38 @@ namespace CppCLR_WinformsProjekt {
 		}
 #pragma endregion
 	private: System::Void openSalesFileDialog_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-		salesFileNameTextBox->Text = "";
+		nwSalesFileTextBox->Text = "";
 	}
 	private: System::Void openSalesFileDialog_FileOk_1(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-		salesFileNameTextBox->Text = openSalesFileDialog->FileName;
-		if (inventoryFileNameTextBox->Text != "" && salesFileNameTextBox->Text != "" && storeComboBox->Text != "" && orderFileLocationtextBox->Text != "")
+		nwSalesFileTextBox->Text = openNWSalesFileDialog->FileName;
+		/*if (inventoryFileNameTextBox->Text != "" && salesFileNameTextBox->Text != "" && storeComboBox->Text != "" && orderFileLocationtextBox->Text != "")
+		{
+			runOrder->Enabled = "TRUE";
+		}*/
+	}
+	private: System::Void openSalesFileBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		openNWSalesFileDialog->ShowDialog();
+		openLemmonSalesFileDialog->ShowDialog();
+		if (nwSalesFileTextBox->Text != "" && nwInventoryFileTextBox->Text != "" && lemmonInvFileTextBox->Text != "" && lemmonSalesFileTextBox->Text != "" && orderFileLocationtextBox->Text != "")
 		{
 			runOrder->Enabled = "TRUE";
 		}
 	}
-	private: System::Void openSalesFileBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		openSalesFileDialog->ShowDialog();
-	}
 	private: System::Void openInventoryFileBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		openInventoryFileDialog->ShowDialog();
+		openNWInventoryFileDialog->ShowDialog();
+		openLemmonInvFileDialog->ShowDialog();
+		if (nwSalesFileTextBox->Text != "" && nwInventoryFileTextBox->Text != "" && lemmonInvFileTextBox->Text != "" && lemmonSalesFileTextBox->Text != "" && orderFileLocationtextBox->Text != "")
+		{
+			runOrder->Enabled = "TRUE";
+		}
 	}
 private: System::Void openInventoryFileDialog_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
-	inventoryFileNameTextBox->Text = openInventoryFileDialog->FileName;
+	nwInventoryFileTextBox->Text = openNWInventoryFileDialog->FileName;
+	/*inventoryFileNameTextBox->Text = openInventoryFileDialog->FileName;
 	if (inventoryFileNameTextBox->Text != "" && salesFileNameTextBox->Text != "" && storeComboBox->Text != "" && orderFileLocationtextBox->Text != "")
 	{
 		runOrder->Enabled = "TRUE";
-	}
+	}*/
 }
 
 private: System::Void orderFileButton_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -315,11 +377,16 @@ private: System::Void orderFileButton_Click(System::Object^  sender, System::Eve
 	{
 		orderFileLocationtextBox->Text = orderFolderBrowserDialog->SelectedPath;
 	}
-	if (inventoryFileNameTextBox->Text != "" && salesFileNameTextBox->Text != "" && storeComboBox->Text != "" && orderFileLocationtextBox->Text != "")
+	if (nwSalesFileTextBox->Text != "" && nwInventoryFileTextBox->Text != "" && lemmonInvFileTextBox->Text != "" && lemmonSalesFileTextBox->Text != "" && orderFileLocationtextBox->Text != "")
 	{
 		runOrder->Enabled = "TRUE";
 	}
+	/*if (inventoryFileNameTextBox->Text != "" && salesFileNameTextBox->Text != "" && storeComboBox->Text != "" && orderFileLocationtextBox->Text != "")
+	{
+		runOrder->Enabled = "TRUE";
+	}*/
 }
+
 
 private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^  e)
 {
@@ -328,31 +395,63 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 	runOrder->Enabled = false;
 
 	// Objects for sales file
-	System::String^ salesFilename;
-	salesFilename = salesFileNameTextBox->Text;
-	System::IO::StreamReader^ salesFile;
+	System::String^ nwSalesFilename;
+	nwSalesFilename = nwSalesFileTextBox->Text;
+	System::IO::StreamReader^ nwSalesFile;
 
 	// Objects for inventory file
-	System::String^ inventoryFilename;
-	inventoryFilename = inventoryFileNameTextBox->Text;
-	System::IO::StreamReader^ inventoryFile;
+	System::String^ nwInventoryFilename;
+	nwInventoryFilename = nwInventoryFileTextBox->Text;
+	System::IO::StreamReader^ nwInventoryFile;
+	
+	// Objects for sales file
+	System::String^ lemmonSalesFilename;
+	lemmonSalesFilename = lemmonSalesFileTextBox->Text;
+	System::IO::StreamReader^ lemmonSalesFile;
 
-	C_BSTree salesTree;
-	C_BSTree inventoryTree;
-	C_BSTree orderTree;
+	// Objects for inventory file
+	System::String^ lemmonInventoryFilename;
+	lemmonInventoryFilename = lemmonInvFileTextBox->Text;
+	System::IO::StreamReader^ lemmonInventoryFile;
+
+	C_BSTree nwSalesTree;
+	C_BSTree nwInventoryTree;
+	C_BSTree nwOrderTree;
+
+	C_BSTree lemmonSalesTree;
+	C_BSTree lemmonInventoryTree;
+	C_BSTree lemmonOrderTree;
+
+	C_BSTree fullOrderTree;
 
 	// Objects for order file
-	System::String^ orderFilename;
-	System::IO::StreamWriter^ orderFile;
-	orderFilename = orderFileLocationtextBox->Text + "\\";
+	System::String^ nwOrderFilename;
+	System::IO::StreamWriter^ nwOrderFile;
+	nwOrderFilename = orderFileLocationtextBox->Text + "\\";
 
 	// Objects for inventory control file
-	System::String^ inventoryControlFilename;
-	System::IO::StreamWriter^ inventoryControlFile;
-	inventoryControlFilename = orderFileLocationtextBox->Text + "\\";
+	System::String^ nwInventoryControlFilename;
+	System::IO::StreamWriter^ nwInventoryControlFile;
+	nwInventoryControlFilename = orderFileLocationtextBox->Text + "\\";
+
+	// Objects for order file
+	System::String^ lemmonOrderFilename;
+	System::IO::StreamWriter^ lemmonOrderFile;
+	lemmonOrderFilename = orderFileLocationtextBox->Text + "\\";
+
+	// Objects for inventory control file
+	System::String^ lemmonInventoryControlFilename;
+	System::IO::StreamWriter^ lemmonInventoryControlFile;
+	lemmonInventoryControlFilename = orderFileLocationtextBox->Text + "\\";
 
 	// Build the filename
-	if (storeComboBox->Text == "Northwest Highway")
+	nwOrderFilename = nwOrderFilename + "NW_ORDER " + dateTimePicker1->Value.ToString("D") + ".csv";
+	nwInventoryControlFilename = nwInventoryControlFilename + "NW_Inventory_Control " + dateTimePicker1->Value.ToString("D") + ".csv";
+
+	lemmonOrderFilename = lemmonOrderFilename + "LEM_ORDER " + dateTimePicker1->Value.ToString("D") + ".csv";
+	lemmonInventoryControlFilename = lemmonInventoryControlFilename + "LEM_Inventory_Control " + dateTimePicker1->Value.ToString("D") + ".csv";
+
+	/*if (storeComboBox->Text == "Northwest Highway")
 	{
 		orderFilename = orderFilename + "NW_ORDER_" + dateTimePicker1->Value.ToString("D") +".csv";
 		inventoryControlFilename = inventoryControlFilename + "NW_Inventory_Control_" + dateTimePicker1->Value.ToString("D") + ".csv";
@@ -366,10 +465,13 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 		// used for debugging
 		//errorMessage->Text = orderFilename;		
 	}
+	*/
+	
+
 
 	try
 	{
-		salesFile = System::IO::File::OpenText(salesFilename);
+		nwSalesFile = System::IO::File::OpenText(nwSalesFilename);
 	}
 	catch (System::Exception^ e)
 	{
@@ -386,7 +488,7 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 
 	try
 	{
-		inventoryFile = System::IO::File::OpenText(inventoryFilename);
+		nwInventoryFile = System::IO::File::OpenText(nwInventoryFilename);
 	}
 	catch (System::Exception^ e)
 	{
@@ -406,11 +508,11 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 
 	errorMessage->Text = "Loading Inventory!";
 	//Call to clear out the headers
-	inventoryFile->ReadLine();
+	nwInventoryFile->ReadLine();
 
-	while (!inventoryFile->EndOfStream)
+	while (!nwInventoryFile->EndOfStream)
 	{
-		currentLine = msclr::interop::marshal_as<std::string>(inventoryFile->ReadLine());
+		currentLine = msclr::interop::marshal_as<std::string>(nwInventoryFile->ReadLine());
 		holdRecord.setItemDescription(getField(currentLine, 2));
 		holdRecord.setAlternateSKU(getField(currentLine, 3));
 		if (getField(currentLine, 8) == "")
@@ -419,7 +521,7 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 		}
 		else
 		{
-			holdRecord.setCost(stof(getField(currentLine, 8)));
+			holdRecord.setCost(roundf(stof(getField(currentLine, 8)) * 100) / 100);
 		}
 
 		holdRecord.setSKU(getField(currentLine, 10));
@@ -439,11 +541,11 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 				holdRecord.setQuantity(stoi(getField(currentLine, 12)));
 			}
 		}
-		inventoryTree.addNode(holdRecord);
+		nwInventoryTree.addNode(holdRecord);
 		lineCount++;
 	}
 
-	inventoryFile->Close();
+	nwInventoryFile->Close();
 
 	// clear out the currentLine to be sure we aren't getting overflow data
 	currentLine = "";
@@ -452,12 +554,12 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 	holdRecord.clear();
 
 	//clear out the header items
-	salesFile->ReadLine();
-	errorMessage->Text = "Loading Sales!";
+	nwSalesFile->ReadLine();
+	errorMessage->Text = "Loading nwSales!";
 
-	while (!salesFile->EndOfStream)
+	while (!nwSalesFile->EndOfStream)
 	{
-		currentLine = msclr::interop::marshal_as<std::string>(salesFile->ReadLine());
+		currentLine = msclr::interop::marshal_as<std::string>(nwSalesFile->ReadLine());
 		holdRecord.setItemDescription(getField(currentLine, 5));
 		holdRecord.setSKU(getField(currentLine, 2));
 		if (getField(currentLine, 7) == "")
@@ -468,44 +570,179 @@ private: System::Void runOrder_Click(System::Object^  sender, System::EventArgs^
 		{
 			holdRecord.setQuantity(stoi(getField(currentLine, 7)));
 		}
-		salesTree.addNode(holdRecord);
+		nwSalesTree.addNode(holdRecord);
 		lineCount++;
 	}
 
 	//string errorMessageText;
 
-	//errorMessage->Text = "Finished adding items to inventory";
+	//errorMessage->Text = "Finished adding items to nwInventory";
 
 	//Debugging message
-	//errorMessage->Text = salesFile->ReadLine();
+	//errorMessage->Text = nwSalesFile->ReadLine();
 
-	salesFile->Close();
+	nwSalesFile->Close();
 
-	salesTree.compileList(inventoryTree, orderTree, salesTree.Root());
+	nwSalesTree.compileList(nwInventoryTree, nwOrderTree, nwSalesTree.Root());
 
 
-	orderFile = gcnew System::IO::StreamWriter(orderFilename);
-	orderFile->WriteLine("SKU,ITEM DESCRIPTION, QTY ORDERED, COST, TOTAL COST");
-	orderTree.saveInorderCSV(orderTree.Root(), orderFile);
 
-	orderFile->Close();
+	nwOrderFile = gcnew System::IO::StreamWriter(nwOrderFilename);
+	nwOrderFile->WriteLine("SKU,ITEM DESCRIPTION, QTY ORDERED, COST, TOTAL COST");
+	nwOrderTree.saveInorderCSV(nwOrderTree.Root(), nwOrderFile);
 
-	inventoryControlFile = gcnew System::IO::StreamWriter(inventoryControlFilename);
-	inventoryControlFile->WriteLine("SKU,ITEM DESCRIPTION, INVENTORY QTY");
+	nwOrderFile->Close();
 
-	inventoryTree.compileCheckList(inventoryTree.Root(), inventoryControlFile);
+	nwInventoryControlFile = gcnew System::IO::StreamWriter(nwInventoryControlFilename);
+	nwInventoryControlFile->WriteLine("SKU,ITEM DESCRIPTION, INVENTORY QTY");
 
-	inventoryControlFile->Close();
+	nwInventoryTree.compileCheckList(nwInventoryTree.Root(), nwInventoryControlFile);
+
+	nwInventoryControlFile->Close();
+
+
+
+	// Build the Lemmon lists
+
+	try
+	{
+		lemmonSalesFile = System::IO::File::OpenText(lemmonSalesFilename);
+	}
+	catch (System::Exception^ e)
+	{
+		if (dynamic_cast<System::IO::FileNotFoundException^>(e))
+		{
+			errorMessage->Text = "sales file not found";
+		}
+		else
+		{
+			errorMessage->Text = "problem reading sales file";
+		}
+	}
+
+
+	try
+	{
+		lemmonInventoryFile = System::IO::File::OpenText(lemmonInventoryFilename);
+	}
+	catch (System::Exception^ e)
+	{
+		if (dynamic_cast<System::IO::FileNotFoundException^>(e))
+		{
+			errorMessage->Text = "inventory file not found";
+		}
+		else
+		{
+			errorMessage->Text = "problem reading inventory file";
+		}
+	}
+
+	lemmonInventoryFile->ReadLine();
+
+	while (!lemmonInventoryFile->EndOfStream)
+	{
+		currentLine = msclr::interop::marshal_as<std::string>(lemmonInventoryFile->ReadLine());
+		holdRecord.setItemDescription(getField(currentLine, 2));
+		holdRecord.setAlternateSKU(getField(currentLine, 3));
+		if (getField(currentLine, 8) == "")
+		{
+			holdRecord.setCost(0);
+		}
+		else
+		{
+			holdRecord.setCost(roundf(stof(getField(currentLine, 8))* 100)/100);
+		}
+
+		holdRecord.setSKU(getField(currentLine, 10));
+
+		if (getField(currentLine, 12) == "")
+		{
+			holdRecord.setQuantity(0);
+		}
+		else
+		{
+			if (stoi(getField(currentLine, 12)) < 0)
+			{
+				holdRecord.setQuantity(0);
+			}
+			else
+			{
+				holdRecord.setQuantity(stoi(getField(currentLine, 12)));
+			}
+		}
+		lemmonInventoryTree.addNode(holdRecord);
+		lineCount++;
+	}
+
+	lemmonInventoryFile->Close();
+
+	// clear out the currentLine to be sure we aren't getting overflow data
+	currentLine = "";
+
+	//clear out the holdInvRecord to be sure we aren't getting overflow data
+	holdRecord.clear();
+
+	//clear out the header items
+	lemmonSalesFile->ReadLine();
+	errorMessage->Text = "Loading lemmonSales!";
+
+	while (!lemmonSalesFile->EndOfStream)
+	{
+		currentLine = msclr::interop::marshal_as<std::string>(lemmonSalesFile->ReadLine());
+		holdRecord.setItemDescription(getField(currentLine, 5));
+		holdRecord.setSKU(getField(currentLine, 2));
+		if (getField(currentLine, 7) == "")
+		{
+			holdRecord.setQuantity(0);
+		}
+		else
+		{
+			holdRecord.setQuantity(stoi(getField(currentLine, 7)));
+		}
+		lemmonSalesTree.addNode(holdRecord);
+		lineCount++;
+	}
+
+	//string errorMessageText;
+
+	//errorMessage->Text = "Finished adding items to lemmonInventory";
+
+	//Debugging message
+	//errorMessage->Text = lemmonSalesFile->ReadLine();
+
+	lemmonSalesFile->Close();
+
+	lemmonSalesTree.compileList(lemmonInventoryTree, lemmonOrderTree, lemmonSalesTree.Root());
+
+
+	lemmonOrderFile = gcnew System::IO::StreamWriter(lemmonOrderFilename);
+	lemmonOrderFile->WriteLine("SKU,ITEM DESCRIPTION, QTY ORDERED, COST, TOTAL COST");
+	lemmonOrderTree.saveInorderCSV(lemmonOrderTree.Root(), lemmonOrderFile);
+
+	lemmonOrderFile->Close();
+
+	lemmonInventoryControlFile = gcnew System::IO::StreamWriter(lemmonInventoryControlFilename);
+	lemmonInventoryControlFile->WriteLine("SKU,ITEM DESCRIPTION, INVENTORY QTY");
+
+	lemmonInventoryTree.compileCheckList(lemmonInventoryTree.Root(), lemmonInventoryControlFile);
+
+	lemmonInventoryControlFile->Close();
+	
+	nwOrderTree.fillDuplicates(lemmonOrderTree, lemmonOrderTree.Root());
+	lemmonOrderTree.fillDuplicates(nwOrderTree, nwOrderTree.Root());
+
+	System::IO::StreamWriter^ testFile;
+	System::String^ testFilename = orderFileLocationtextBox->Text + "\\Full Order " + dateTimePicker1->Value.ToString("D") + ".csv";
+	testFile = gcnew System::IO::StreamWriter(testFilename);
+
+	testFile->WriteLine("SKU,ITEM DESC, NW QTY, LEM QTY, COST, TOTAL COST");
+
+	nwOrderTree.saveInorderCSV(nwOrderTree.Root(), lemmonOrderTree, testFile);
+	testFile->Close();
 
 	errorMessage->Text = "Complete!";
 }
 
-private: System::Void storeComboBox_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (inventoryFileNameTextBox->Text != "" && salesFileNameTextBox->Text != "" && storeComboBox->Text != "" && orderFileLocationtextBox->Text != "")
-	{
-		runOrder->Enabled = "TRUE";
-	}
-}
 
 private: std::string getField(string str, int position)
 {
@@ -523,5 +760,12 @@ private: std::string getField(string str, int position)
 	return holdString;
 }
 
+
+private: System::Void openLemmonSalesFileDialog_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+	lemmonSalesFileTextBox->Text = openLemmonSalesFileDialog->FileName;
+}
+private: System::Void openLemmonInvFileDialog_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+	lemmonInvFileTextBox->Text = openLemmonInvFileDialog->FileName;
+}
 };
 }

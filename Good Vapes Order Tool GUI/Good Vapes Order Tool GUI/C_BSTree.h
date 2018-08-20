@@ -33,6 +33,8 @@ public:
 	void compileCheckList(C_Node* Node, fstream& out);
 	void compileCheckList(C_Node* Node, System::IO::StreamWriter^ out);
 
+	void fillDuplicates(C_BSTree& tree, C_Node* Node);
+
 
 	//NJA adding to test if the tree is empty or not
 	bool empty();
@@ -49,6 +51,7 @@ public:
 	ostream& saveInorderCSV(C_Node*, ostream&);
 	
 	void saveInorderCSV(C_Node*, System::IO::StreamWriter^);
+	void saveInorderCSV(C_Node*, C_BSTree tree, System::IO::StreamWriter^);
 
 };
 

@@ -542,7 +542,7 @@ void C_BSTree::saveInorderCSV(C_Node *Node, C_BSTree tree, System::IO::StreamWri
 		 + "," + to_string(holdRecord.getQuantity()) 
 		 + "," + to_string(holdSecondRecord.getQuantity()) 
 		 + "," + to_string(holdRecord.getCost()) 
-		 + "," + to_string(roundf(holdRecord.getCost() * static_cast<float>(holdRecord.getQuantity() + holdSecondRecord.getQuantity())));
+		 + "," + to_string(holdRecord.getCost() * static_cast<float>(holdRecord.getQuantity() + holdSecondRecord.getQuantity()));
 	// try it manually
 	System::String^ writeString = gcnew System::String(holdString.c_str());
 

@@ -330,7 +330,7 @@ namespace CppCLR_WinformsProjekt {
 			this->Controls->Add(this->openInventoryFileBtn);
 			this->Controls->Add(this->openSalesFileBtn);
 			this->Name = L"Form1";
-			this->Text = L"Good Vapes Order Tool v1.1";
+			this->Text = L"Good Vapes Order Tool v2.0";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
